@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Nueva inscripcion</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input type="date" name="fecha" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Estudiante</label>
+        <select name="estudiante_id" class="form-select" required>
+            {% for e in estudiantes %}
+            <option value="{{ e.id }}">{{ e.nombre }} {{ e.apellidos }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Curso</label>
+        <select name="curso_id" class="form-select" required>
+            {% for c in cursos %}
+            <option value="{{ c.id }}">{{ c.descripcion }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}
