@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Inscripciones</h2>
+<a href="{{ url_for('nueva_inscripcion') }}" class="btn btn-success mb-3">Nuevo</a>
+
+<table class="table table-striped align-middle">
+    <thead class="table-dark-header">
+        <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Curso</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in inscripciones %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.fecha }}</td>
+            <td>{{ i.estudiante }}</td>
+            <td>{{ i.curso }}</td>
+            <td>
+                <a href="{{ url_for('eliminar_inscripcion', id=i.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro ??')">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
